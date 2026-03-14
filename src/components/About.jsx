@@ -21,6 +21,11 @@ const About = () => {
                             <p className="max-w-3xl mx-auto font-light leading-loose">{portfolioData.about}</p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-12 max-w-3xl mx-auto text-left">
                                 <div className="p-6 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700">
+                                    <h4 className="font-bold text-slate-900 dark:text-white mb-2 text-xl font-display">Education</h4>
+                                    <p className="text-primary-600 dark:text-primary-400 font-medium">B.Tech in Computer Science</p>
+                                    <p className="text-slate-500 dark:text-slate-500 text-sm mt-1">CGC Jhanjeri (2022 - 2026)</p>
+                                </div>
+                                <div className="p-6 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700">
                                     <h4 className="font-bold text-slate-900 dark:text-white mb-2 text-xl font-display">Location</h4>
                                     <a 
                                         href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(portfolioData.location)}`}
