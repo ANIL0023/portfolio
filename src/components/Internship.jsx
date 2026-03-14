@@ -43,7 +43,7 @@ const Internship = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-20"
                 >
-                    <h2 className="text-4xl lg:text-5xl font-bold mb-16 text-center text-slate-900 dark:text-white">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 sm:mb-16 text-center text-slate-900 dark:text-white shrink-0">
                         Internship Experience
                     </h2>
                 </motion.div>
