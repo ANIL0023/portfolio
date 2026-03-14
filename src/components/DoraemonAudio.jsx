@@ -2,18 +2,65 @@ import React, { useState, useRef, useEffect } from 'react';
 
 const DoraemonAudio = () => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const audioRef = useRef(null);
     const [showTooltip, setShowTooltip] = useState(false);
+    const iframeRef = useRef(null);
+    const widgetRef = useRef(null);
+    const [isWidgetReady, setIsWidgetReady] = useState(false);
 
-    const audioUrl = "/audio/doraemon.mp3";
+    const soundCloudUrl = "https://soundcloud.com/c-nguy-n-520304333/nst-doremon-tru-mu-a-h-c-2k1";
+
+    useEffect(() => {
+        // Load SoundCloud Widget API script
+        const script = document.createElement('script');
+        script.src = "https://w.soundcloud.com/player/api.js";
+        script.async = true;
+        
+        script.onload = () => {
+            if (window.SC && iframeRef.current) {
+                const widget = window.SC.Widget(iframeRef.current);
+                widgetRef.current = widget;
+                
+                widget.bind(window.SC.Widget.Events.READY, () => {
+                    setIsWidgetReady(true);
+                    widget.setVolume(40);
+                    // Pre-warm: seek, play, and pause instantly to trigger buffering
+                    widget.seekTo(2500);
+                    widget.play();
+                    widget.pause();
+                });
+
+                widget.bind(window.SC.Widget.Events.FINISH, () => {
+                    setIsPlaying(false);
+                });
+            }
+        };
+
+        document.body.appendChild(script);
+
+        // Show tooltip on mount to nudge user
+        const timer = setTimeout(() => setShowTooltip(true), 1500);
+        const hideTimer = setTimeout(() => setShowTooltip(false), 6000);
+
+        return () => {
+            document.body.removeChild(script);
+            clearTimeout(timer);
+            clearTimeout(hideTimer);
+        };
+    }, []);
 
     const togglePlay = () => {
+        if (!isWidgetReady || !widgetRef.current) return;
+
         if (isPlaying) {
-            audioRef.current.pause();
+            widgetRef.current.pause();
         } else {
-            audioRef.current.volume = 0.4;
-            audioRef.current.play().catch(error => {
-                console.error("Audio playback failed:", error);
+            // Speed optimization: Just play. The READY hook and finish hook handle seeking if needed.
+            // But to be safe, we seek only if it's near the very beginning to avoid jumpy resumes.
+            widgetRef.current.getPosition((pos) => {
+                if (pos < 2500) {
+                    widgetRef.current.seekTo(2500);
+                }
+                widgetRef.current.play();
             });
         }
         setIsPlaying(!isPlaying);
@@ -21,40 +68,26 @@ const DoraemonAudio = () => {
 
     const handleRestart = (e) => {
         e.stopPropagation();
-        // Reset to exactly after the silence (1.5s)
-        audioRef.current.currentTime = 1.5;
-        audioRef.current.volume = 0.4;
-        if (!isPlaying) {
-            audioRef.current.play().catch(error => {
-                console.error("Audio playback failed:", error);
-            });
-            setIsPlaying(true);
-        }
-    };
+        if (!isWidgetReady || !widgetRef.current) return;
 
-    // Fix silence at start when loading
-    const handleMetadataLoaded = () => {
-        if (audioRef.current) {
-            audioRef.current.currentTime = 1.5;
-        }
+        widgetRef.current.seekTo(2500);
+        widgetRef.current.play();
+        setIsPlaying(true);
     };
-
-    useEffect(() => {
-        if (audioRef.current) {
-            audioRef.current.volume = 0.4;
-        }
-        
-        // Show tooltip on mount to nudge user
-        const timer = setTimeout(() => setShowTooltip(true), 1500);
-        const hideTimer = setTimeout(() => setShowTooltip(false), 6000);
-        return () => {
-            clearTimeout(timer);
-            clearTimeout(hideTimer);
-        };
-    }, []);
 
     return (
         <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 pointer-events-none">
+            {/* Hidden SoundCloud Player */}
+            <iframe
+                ref={iframeRef}
+                width="100%"
+                height="166"
+                scrolling="no"
+                frameBorder="no"
+                allow="autoplay"
+                src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(soundCloudUrl)}&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false`}
+                className="hidden"
+            />
 
             <div className="relative flex flex-col items-end">
                 {showTooltip && (
@@ -72,7 +105,9 @@ const DoraemonAudio = () => {
                         group pointer-events-auto relative w-20 h-20 rounded-full flex items-center justify-center
                         transition-all duration-500 transform hover:scale-105 active:scale-95
                         bg-[#1a1c15] shadow-[0_0_15px_rgba(0,0,0,0.5)] border border-[#2d3128]
+                        ${!isWidgetReady ? 'opacity-50 cursor-not-allowed' : ''}
                     `}
+                    disabled={!isWidgetReady}
                     aria-label={isPlaying ? "Pause Doraemon Theme" : "Play Doraemon Theme"}
                 >
                     {/* Visualizer bars in the center */}
@@ -95,18 +130,6 @@ const DoraemonAudio = () => {
                     )}
                 </button>
             </div>
-
-            <audio
-                ref={audioRef}
-                src={audioUrl}
-                preload="auto"
-                onLoadedMetadata={handleMetadataLoaded}
-                loop
-                onEnded={() => {
-                    setIsPlaying(false);
-                    audioRef.current.currentTime = 1.5; // Reset for next play
-                }}
-            />
 
             <style jsx>{`
                 @keyframes music-bar {
