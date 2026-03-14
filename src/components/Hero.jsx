@@ -21,11 +21,11 @@ const Hero = () => {
                             Open to new opportunities
                         </div>
 
-                        <h1 className="text-5xl lg:text-7xl font-bold mb-6 tracking-tight">
+                        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 tracking-tight leading-tight">
                             Hi, I'm <span className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">{portfolioData.name.split(' ')[0]}</span>
                         </h1>
 
-                        <h2 className="text-xl lg:text-2xl text-slate-600 dark:text-slate-400 mb-8 font-medium leading-relaxed">
+                        <h2 className="text-lg sm:text-xl lg:text-2xl text-slate-600 dark:text-slate-400 mb-8 font-medium leading-relaxed max-w-2xl">
                             {portfolioData.title}
                         </h2>
 
@@ -37,8 +37,8 @@ const Hero = () => {
                             <a href="#projects" className="btn-primary flex items-center gap-2">
                                 View Projects <ArrowRight size={18} />
                             </a>
-                            <a href={portfolioData.resume} target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2">
-                                Download Resume <Download size={18} />
+                            <a href={portfolioData.resume} target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2 whitespace-nowrap">
+                                CV <Download size={18} />
                             </a>
                             <div className="flex gap-3 ml-2">
                                 <a href={portfolioData.github} target="_blank" rel="noopener noreferrer" className="p-3 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 rounded-full hover:text-primary-600 hover:border-primary-500 transition-all shadow-sm">
@@ -50,22 +50,22 @@ const Hero = () => {
                             </div>
                         </div>
 
-                        <div className="mt-12 flex items-center gap-6 text-slate-400">
+                        <div className="mt-12 flex flex-wrap items-center gap-4 sm:gap-6 text-slate-400">
                             <a 
                                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(portfolioData.location)}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2 hover:text-primary-600 transition-colors"
+                                className="flex items-center gap-2 hover:text-primary-600 transition-colors text-sm sm:text-base"
                             >
                                 <MapPin size={18} />
-                                <span>{portfolioData.location}</span>
+                                <span className="truncate max-w-[150px] sm:max-w-none">{portfolioData.location}</span>
                             </a>
                             <a 
                                 href={`mailto:${portfolioData.email}`}
-                                className="flex items-center gap-2 hover:text-primary-600 transition-colors"
+                                className="flex items-center gap-2 hover:text-primary-600 transition-colors text-sm sm:text-base"
                             >
                                 <Mail size={18} />
-                                <span>{portfolioData.email}</span>
+                                <span className="truncate max-w-[200px] sm:max-w-none">{portfolioData.email}</span>
                             </a>
                         </div>
                     </motion.div>

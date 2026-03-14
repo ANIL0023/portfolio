@@ -45,7 +45,7 @@ const Contact = () => {
     return (
         <section id="contact" className="py-20 bg-slate-50 dark:bg-slate-900/50">
             <div className="section-container">
-                <h2 className="text-4xl lg:text-5xl font-bold mb-16 text-center text-slate-900 dark:text-white">Get In Touch</h2>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 sm:mb-16 text-center text-slate-900 dark:text-white">Get In Touch</h2>
 
                 <div className="grid lg:grid-cols-2 gap-12 items-start">
                     <motion.div
