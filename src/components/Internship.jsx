@@ -95,6 +95,23 @@ const Internship = () => {
                                                         <span className="text-sm font-semibold">{intern.location}</span>
                                                     </div>
                                                 </div>
+
+                                                {intern.certificate && (
+                                                    <motion.div 
+                                                        initial={{ opacity: 0, y: 10 }}
+                                                        whileInView={{ opacity: 1, y: 0 }}
+                                                        className="pt-4"
+                                                    >
+                                                        <a 
+                                                            href={intern.certificate}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="inline-flex items-center gap-2 w-full justify-center px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white text-sm font-bold rounded-xl transition-all shadow-lg shadow-primary-600/20 hover:shadow-primary-600/40 hover:-translate-y-0.5"
+                                                        >
+                                                            View Certificate <ExternalLink size={14} />
+                                                        </a>
+                                                    </motion.div>
+                                                )}
                                             </div>
                                         </div>
                                     </div>

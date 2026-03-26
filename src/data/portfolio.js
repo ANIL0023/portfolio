@@ -16,7 +16,6 @@ export const portfolioData = {
         { name: "ChatGPT 4 Prompt Engineering", issuer: "Infosys", link: "https://drive.google.com/file/d/1LyTfc79MUaDUxvV-vXaFBDWs4XyfaXsW/view" },
         { name: "Master Generative AI & Generative AI tool", issuer: "Udemy", link: "https://drive.google.com/file/d/1HQM-E9E_fY2iatOlOzHLxhNPDrsvlo-Z/view" },
         { name: "Build Generative AI Apps and Solutions with No-Code Tools", issuer: "Infosys", link: "https://drive.google.com/file/d/1HQM-E9E_fY2iatOlOzHLxhNPDrsvlo-Z/view" },
-        { name: "DRDO Internship Certificate", issuer: "DRDO", link: "https://www.linkedin.com/feed/update/urn:li:activity:7365236128028770304/" },
         { name: "Introduction to Hardware Operating System", issuer: "IBM", link: "https://drive.google.com/file/d/12EzP0Rg_mtrUmlsXKFnJhd8AOcjm0CPi/view" },
         { name: "Basic Python towards AI/ML", issuer: "CSE Pathshala", link: "https://drive.google.com/file/d/12EzP0Rg_mtrUmlsXKFnJhd8AOcjm0CPi/view" },
     ],
@@ -96,7 +95,8 @@ export const portfolioData = {
                 "Stored audit logs and historical records in a SQLite database for compliance tracking and structured analysis.",
                 "Built features to generate automated PDF security reports summarizing system configurations, detected vulnerabilities, and severity levels."
             ],
-            technologies: ["Python", "Tkinter", "SQLite", "ReportLab", "SSH", "WinRM", "Paramiko", "psutil", "Socket Programming", "JSON", "Threading"]
+            technologies: ["Python", "Tkinter", "SQLite", "ReportLab", "SSH", "WinRM", "Paramiko", "psutil", "Socket Programming", "JSON", "Threading"],
+            certificate: "https://www.linkedin.com/feed/update/urn:li:activity:7365236128028770304/"
         }
     ],
     achievements: [
