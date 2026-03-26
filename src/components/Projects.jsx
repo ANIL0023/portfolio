@@ -23,6 +23,11 @@ const ProjectCard = ({ project, index }) => (
                     <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm rounded-full shadow-xl hover:text-primary-600 hover:scale-110 transition-all">
                         <Github size={20} />
                     </a>
+                    {project.link && project.link !== "#" && (
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm rounded-full shadow-xl hover:text-primary-600 hover:scale-110 transition-all">
+                            <ExternalLink size={20} />
+                        </a>
+                    )}
                 </div>
             </div>
         </div>

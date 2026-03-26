@@ -58,7 +58,7 @@ export const portfolioData = {
             description: "A modern, full-featured blog platform built with Next.js, featuring Google authentication and a clean management interface.",
             tech: ["Next.js", "React", "MongoDB", "Tailwind CSS", "NextAuth.js"],
             image: "/projects/blog-platform.png",
-            github: "https://github.com/ANIL0023/blog-w273",
+            github: "https://github.com/ANIL0023/BLOG",
             link: "https://blog-w273.vercel.app/"
         }
     ],
