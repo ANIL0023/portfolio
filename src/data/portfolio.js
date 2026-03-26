@@ -96,7 +96,7 @@ export const portfolioData = {
                 "Built features to generate automated PDF security reports summarizing system configurations, detected vulnerabilities, and severity levels."
             ],
             technologies: ["Python", "Tkinter", "SQLite", "ReportLab", "SSH", "WinRM", "Paramiko", "psutil", "Socket Programming", "JSON", "Threading"],
-            certificate: "https://www.linkedin.com/feed/update/urn:li:activity:7365236128028770304/"
+            certificate: "https://drive.google.com/file/d/1U8jZMqnBfBXFfD2WMySOm_o3blo04v2q/view?usp=sharing"
         }
     ],
     achievements: [
