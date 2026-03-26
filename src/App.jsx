@@ -8,6 +8,7 @@ import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Internship from './components/Internship';
+import Achievements from './components/Achievements';
 import DoraemonAudio from './components/DoraemonAudio';
 import ParticleBackground from './components/ParticleBackground';
 
@@ -22,6 +23,7 @@ function App() {
         <Skills />
         <Internship />
         <Projects />
+        <Achievements />
         <Certificates />
         <Contact />
       </main>

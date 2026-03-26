@@ -52,6 +52,14 @@ export const portfolioData = {
             image: "/projects/network-audit.png",
             github: "https://github.com/ANIL0023/Enterprise-Network-Audit-Discovery-System",
             link: "#"
+        },
+        {
+            title: "Blog Platform",
+            description: "A modern, full-featured blog platform built with Next.js, featuring Google authentication and a clean management interface.",
+            tech: ["Next.js", "React", "MongoDB", "Tailwind CSS", "NextAuth.js"],
+            image: "/projects/blog-platform.png",
+            github: "https://github.com/ANIL0023/blog-w273",
+            link: "https://blog-w273.vercel.app/"
         }
     ],
 
@@ -89,6 +97,13 @@ export const portfolioData = {
                 "Built features to generate automated PDF security reports summarizing system configurations, detected vulnerabilities, and severity levels."
             ],
             technologies: ["Python", "Tkinter", "SQLite", "ReportLab", "SSH", "WinRM", "Paramiko", "psutil", "Socket Programming", "JSON", "Threading"]
+        }
+    ],
+    achievements: [
+        {
+            title: "LeetCode Achievements",
+            description: "Successfully solved 150+ DSA questions on LeetCode, demonstrating strong analytical skills and proficiency in algorithms and data structures.",
+            icon: "Code"
         }
     ]
 };
